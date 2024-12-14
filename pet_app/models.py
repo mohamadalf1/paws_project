@@ -1,3 +1,11 @@
 from django.db import models
 
 # Create your models here.
+class Pet(models.Model):
+    petName = models.CharField(max_length=255),
+    petAge = models.IntegerField(),
+    petBreed = models.CharField(max_length=255),
+    petImage = models.CharField(max_length=500)
+
+    class Meta:
+        db_table = "pets"
