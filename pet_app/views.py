@@ -34,7 +34,7 @@ def add_pet_form(request):
 
 
 def create_blog(request):
-    blog_form = BlogForm()
+    blog_form = BlogForm(request.POST)
     if request.method == "POST":
         if blog_form.is_valid():
             
@@ -45,8 +45,13 @@ def create_blog(request):
                 content = blog_data['content']
             )
             new_blog.save()
-            return redirect('home')
+            return redirect('get_blog')
         
     else:
         blog_form
     return render(request, "pet_app/create_blog.html",{'blog_form': blog_form})
+
+
+def blog(request):
+    blog = Blog.objects.all()
+    return render(request, "pet_app/blogs.html", {'blogs': blog})

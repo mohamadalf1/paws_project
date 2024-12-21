@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Create a Blog</h1>
-    <form mathod="POST">
+    <form method="POST">
         {% csrf_token %}
         {{ blog_form.as_p }}
         <input type="submit" value="Create Blog">
